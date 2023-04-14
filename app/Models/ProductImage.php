@@ -26,7 +26,7 @@ class ProductImage extends Model
    }
 
 
-   public function setPrimary(bool $primary): void
+   public function setIsPrimary(bool $primary): void
    {
       if ($this->is_primary === $primary) {
          return; // Image is already primary, nothing to do
