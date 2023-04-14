@@ -20,11 +20,21 @@ class ProductImage extends Model
       return $this->belongsTo(Product::class);
    }
 
+   public function isPrimary(): bool
+   {
+      return $this->is_primary === true;
+   }
+
+
    public function setPrimary(bool $primary): void
    {
+      if ($this->is_primary === $primary) {
+         return; // Image is already primary, nothing to do
+      }
+
       if ($primary) {
          // Unset primary flag for all other images of this product
-         ProductImage::where("product_id", $this->product_id)
+         $this->product->images()->where("is_primary", true)
             ->where("id", "<>", $this->id)
             ->update(["is_primary" => false]);
       }

@@ -19,10 +19,10 @@ class ProductImageFactory extends Factory
    public function definition(): array
    {
       $product = Product::inRandomOrder()->first();
-      $isPrimary = !ProductImage::where('product_id', $product->id)->exists();
+      $isPrimary = !ProductImage::where('product_id', $product->id)->where('is_primary', true)->exists();
       return [
          "product_id" => $product->id,
-         "url" => fake()->imageUrl(),
+         "url" => $this->faker->imageUrl(),
          "is_primary" => $isPrimary
       ];
    }
