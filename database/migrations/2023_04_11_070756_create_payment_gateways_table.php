@@ -13,7 +13,7 @@ return new class extends Migration
    {
       Schema::create("payment_gateways", function (Blueprint $table) {
          $table->id();
-         $table->string("name")->unique();
+         $table->char("name", 255)->unique();
          $table->timestamps();
       });
    }

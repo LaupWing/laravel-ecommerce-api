@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId("user_id")->constrained()->onDelete("cascade");
             $table->foreignId("store_id")->constrained()->onDelete("cascade");
             $table->foreignId("product_id")->constrained()->onDelete("cascade");
+            $table->foreign("payment_gateway")->references("name")->on("payment_gateways");
             $table->enum("status", [
                "pending", 
                "processing", 
@@ -29,9 +30,9 @@ return new class extends Migration
             $table->decimal("total_price", 10, 2);
             $table->integer("quantity");
             $table->timestamps();
-
+            
             $table->unique(["user_id", "store_id", "product_id"]);
-            $table->foreign("payment_gateway")->references("name")->on("payment_gateways");
+            $table->char("payment_gateway", 255);
         });
     }
 
