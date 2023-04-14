@@ -28,4 +28,8 @@ class Product extends Model
    public function payment(){
       return $this->hasOne(Payment::class);
    }
+
+   public function images(){
+      return $this->hasMany(ProductImage::class);
+   }
 }
