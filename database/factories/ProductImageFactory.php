@@ -21,7 +21,7 @@ class ProductImageFactory extends Factory
       return [
          "product_id" => $product->id,
          "url" => fake()->imageUrl(),
-         "is_primary" => $product->images()->count() === 0
+         // "is_primary" => false
       ];
    }
 }
