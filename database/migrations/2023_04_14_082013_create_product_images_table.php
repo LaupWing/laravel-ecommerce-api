@@ -17,7 +17,7 @@ return new class extends Migration
          $table->string("url");
          $table->boolean("is_primary")->default(false);
          $table->timestamps();
-         $table->unique(["product_id", "is_primary"]);
+         // $table->unique(["product_id", "is_primary"]);
       });
    }
 

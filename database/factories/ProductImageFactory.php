@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,10 +19,11 @@ class ProductImageFactory extends Factory
    public function definition(): array
    {
       $product = Product::inRandomOrder()->first();
+      $isPrimary = !ProductImage::where('product_id', $product->id)->exists();
       return [
          "product_id" => $product->id,
          "url" => fake()->imageUrl(),
-         // "is_primary" => false
+         "is_primary" => $isPrimary
       ];
    }
 }
