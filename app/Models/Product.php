@@ -20,4 +20,12 @@ class Product extends Model
    {
       return $this->hasMany(Order::class);
    }
+
+   public function product(){
+      return $this->belongsTo(Product::class);
+   }
+
+   public function payment(){
+      return $this->hasOne(Payment::class);
+   }
 }
