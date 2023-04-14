@@ -22,7 +22,8 @@ class StoreFactory extends Factory
             return User::inRandomOrder()->first()->id;
          },
          "name" => fake()->company(),
-         "description" => fake()->paragraph()
+         "description" => fake()->paragraph(),
+         "image" => fake()->imageUrl($width = 400, $height = 400)
       ];
    }
 }
