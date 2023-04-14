@@ -16,7 +16,7 @@ return new class extends Migration
          $table->foreignId("store_id")->constrained()->onDelete("cascade");
          $table->string("name");
          $table->text("description")->nullable();
-         $table->decimal("price");
+         $table->decimal("price", 10, 2);
          $table->integer("quantity");
          $table->timestamps();
       });
