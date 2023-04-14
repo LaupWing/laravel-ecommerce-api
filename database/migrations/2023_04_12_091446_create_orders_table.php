@@ -31,6 +31,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unique(["user_id", "store_id", "product_id"]);
+            $table->foreign("payment_gateway")->references("name")->on("payment_gateways");
         });
     }
 
