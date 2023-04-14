@@ -16,7 +16,16 @@ return new class extends Migration
             $table->foreignId("user_id")->constrained()->onDelete("cascade");
             $table->foreignId("store_id")->constrained()->onDelete("cascade");
             $table->foreignId("product_id")->constrained()->onDelete("cascade");
-            $table->string("status")->default("pending");
+            $table->enum("status", [
+               "pending", 
+               "processing", 
+               "shipped", 
+               "delivered", 
+               "cancelled", 
+               "refunded", 
+               "returned", 
+               "completed"
+            ])->default("pending");
             $table->decimal("total_price", 10, 2);
             $table->integer("quantity");
             $table->timestamps();
