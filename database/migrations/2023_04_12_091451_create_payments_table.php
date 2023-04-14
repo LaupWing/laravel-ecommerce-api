@@ -21,7 +21,7 @@ return new class extends Migration
                "processing",
                "cancelled",
                "completed"
-            ])->default("pending");
+            ])->default("processing");
             $table->integer("amount");
             $table->timestamps();
         });
